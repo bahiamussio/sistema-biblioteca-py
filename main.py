@@ -1,6 +1,6 @@
 from clases.libros import Libro
 from clases.prestamos import Prestamo
-from clases.usuarios import Usuario  # Asegúrate de tener esta clase definida
+from clases.usuarios import Usuario
 from biblioteca import Biblioteca
 
 
@@ -16,8 +16,9 @@ def mostrar_menu():
         print("4. Prestar libro 📘")
         print("5. Devolver libro 🔄")
         print("6. Ver lista de libros prestados 📝")
-        print("7. Ver lista de usuarios registrados 🧑‍🤝‍🧑")  # Nueva opción
-        print("8. Salir ❌")
+        print("7. Ver lista de usuarios registrados 🧑‍🤝‍🧑")
+        print("8. Eliminar libro 🗑️")
+        print("9. Salir ❌")
 
         opcion = input(
             "¡Bienvenido a la Biblioteca de Haku! Por favor, elige una opción: "
@@ -34,7 +35,7 @@ def mostrar_menu():
             biblioteca.registrar_usuario(nombre, dni)
 
         elif opcion == "3":
-            biblioteca.mostrar_libros()  # Llamada correcta a la función
+            biblioteca.mostrar_libros()
 
         elif opcion == "4":
             dni = int(input("Ingresa el DNI del usuario: "))
@@ -45,19 +46,23 @@ def mostrar_menu():
             dni = int(input("Ingresa el DNI del usuario: "))
             titulo = input("Ingresa el título del libro: ")
             biblioteca.devolver_libro(dni, titulo)
-        
+
         elif opcion == "6":
-            biblioteca.mostrar_usuarios_prestados()  # Mostrar los usuarios con préstamos
+            biblioteca.mostrar_usuarios_prestados()
 
         elif opcion == "7":
-            biblioteca.mostrar_usuarios()  # Mostrar los usuarios registrados
+            biblioteca.mostrar_usuarios()
 
         elif opcion == "8":
+            titulo = input("Ingresa el título del libro que deseas eliminar: ")
+            biblioteca.eliminar_libro(titulo)
+
+        elif opcion == "9":
             print("¡Gracias por usar el sistema de la Biblioteca de Haku!")
             break
+
         else:
             print("Opción no válida. Por favor, elige una opción correcta.")
-
 
 
 # Llamar a la función menu para que el programa empiece

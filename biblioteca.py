@@ -47,7 +47,26 @@ class Biblioteca:
             usuario = Usuario(nombre, dni)
             self.usuarios.append(usuario)
             print(f"El usuario {nombre} con DNI {dni} ha sido registrado.")
+# Eliminar un libro
+    def eliminar_libro(self, titulo):
+        libro_encontrado = next(
+            (l for l in self.libros if l.titulo.lower().strip() == titulo.lower().strip()),
+            None
+        )
+        if not libro_encontrado:
+            print(f"No se encontró el libro '{titulo}' en la biblioteca.")
+            return False
 
+        # Validación: no permitir eliminar si está prestado
+        if not getattr(libro_encontrado, "disponible", True):
+            print(f"No se puede eliminar '{libro_encontrado.titulo}' porque actualmente está prestado.")
+            return False
+
+        self.libros.remove(libro_encontrado)
+        if hasattr(self, "guardar_datos"):
+            self.guardar_datos()
+        print(f"El libro '{libro_encontrado.titulo}' ha sido eliminado exitosamente del catálogo.")
+        return True
     # Prestar un libro a un usuario
     def prestar_libro(self, dni, titulo):
         usuario = next((u for u in self.usuarios if u.dni == dni), None)
