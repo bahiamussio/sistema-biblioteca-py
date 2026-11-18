@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Modulo de biblioteca - registro de prestamos
-=======
-# Modulo de biblioteca - busqueda de libros
->>>>>>> ff6588e6e83d11a8ceed5de6bb94edbb8d483ecf
+# Modulo de biblioteca - busqueda de libros y registro de prestamos
 # Clase Biblioteca
 from clases.libros import Libro
 from clases.prestamos import Prestamo
