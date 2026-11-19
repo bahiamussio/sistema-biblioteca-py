@@ -16,6 +16,9 @@ class TestSistemaBiblioteca(unittest.TestCase):
         self.assertEqual(usuario.nombre, "Juan Perez")
         self.assertEqual(usuario.dni, 12345678)
 
+    def test_libro_disponible_por_defecto_rosa(self):
+        libro = Libro("El principito", "Antoine de Saint-Exupery")
+        self.assertTrue(libro.disponible)
 
 if __name__ == "__main__":
     unittest.main()
